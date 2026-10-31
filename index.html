@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="한국사능력검정시험 심화 51~80회 기출·예상문제 연습장">
+<title>한능검 심화 기출 연습장</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Gaegu:wght@400;700&display=swap">
+<style>
+/* Layout: one reading column (max 880px) under a sticky tab bar; celadon = right/primary, seal-red = wrong */
+:root{
+  --bg:#F1F4F2; --surface:#FFFFFF; --sunk:#E7ECE9; --ink:#17212A; --muted:#5B6870; --line:#D6DDD9;
+  --cel:#2B7767; --cel-ink:#FFFFFF; --cel-soft:#DBECE6; --seal:#B5412D; --seal-soft:#F5E1DB; --pencil:#5D6390; --gold:#9A7522;
+  --f-display:"Gowun Batang","Nanum Myeongjo",serif; --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif; --f-hand:"Gaegu","Nanum Pen Script",cursive;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10161A; --surface:#172026; --sunk:#1E292F; --ink:#E6ECE9; --muted:#9AA8AF; --line:#2A363D;
+  --cel:#5DBBA4; --cel-ink:#0C1A16; --cel-soft:#1C352F; --seal:#E5806B; --seal-soft:#3A2420; --pencil:#A8ADD6; --gold:#D3AE5A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10161A; --surface:#172026; --sunk:#1E292F; --ink:#E6ECE9; --muted:#9AA8AF; --line:#2A363D;
+  --cel:#5DBBA4; --cel-ink:#0C1A16; --cel-soft:#1C352F; --seal:#E5806B; --seal-soft:#3A2420; --pencil:#A8ADD6; --gold:#D3AE5A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--cel);outline-offset:2px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.top-in,.wrap{max-width:880px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top-in{display:flex;align-items:center;gap:12px;min-height:54px;flex-wrap:wrap}
+.brand{font-family:var(--f-display);font-weight:700;font-size:18px;letter-spacing:-.01em;margin-right:auto;white-space:nowrap}
+.brand small{font-family:var(--f-body);font-weight:500;font-size:11px;color:var(--muted);margin-left:6px;letter-spacing:.04em}
+nav.tabs{display:flex;gap:2px;overflow-x:auto}
+nav.tabs a{padding:8px 12px;border-radius:8px;color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;white-space:nowrap}
+nav.tabs a[aria-current="page"]{color:var(--ink);background:var(--sunk)}
+.wrap{padding-block:24px 64px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:30px;line-height:1.25}
+h2{font-size:22px}
+h3{font-size:17px}
+.muted{color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:16px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 16px;font-weight:600}
+.btn.primary{background:var(--cel);border-color:var(--cel);color:var(--cel-ink)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.ghost{background:transparent}
+.label{font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--muted)}
+/* home */
+.hero{display:grid;gap:14px;padding-block:8px 6px}
+.hero p{margin:0;max-width:60ch}
+.stats{display:flex;gap:28px;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.stats b{display:block;font-family:var(--f-display);font-size:26px}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.mode{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;text-decoration:none;color:inherit}
+.mode:hover{border-color:var(--cel)}
+.mode strong{font-family:var(--f-display);font-size:19px}
+.mode span{color:var(--muted);font-size:14px}
+.seal{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:6px;background:var(--seal);color:#fff;font-family:var(--f-display);font-weight:700;font-size:17px}
+.seal.c{background:var(--cel);color:var(--cel-ink)}
+.seal.g{background:var(--gold);color:#fff}
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:500;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--cel-soft);border-color:var(--cel);color:var(--ink)}
+.chip small{color:var(--muted);margin-left:4px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:var(--surface);padding:8px 14px;font-weight:600;font-size:14px;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.field{display:grid;gap:8px}
+/* quiz */
+.qbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.progress{flex:1;min-width:120px;height:6px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--cel)}
+.qmeta{display:flex;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.tag{border:1px solid var(--line);border-radius:6px;padding:1px 8px;background:var(--surface)}
+.qimg{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:8px;overflow:hidden}
+.qimg img{display:block;width:100%;height:auto}
+.qimg .ph{height:320px;display:grid;place-items:center;color:#667}
+.choices{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.choice{border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:12px 0;font-size:22px;font-family:var(--f-display);font-weight:700}
+.choice:hover:not(:disabled){border-color:var(--cel)}
+.choice.right{background:var(--cel);border-color:var(--cel);color:var(--cel-ink)}
+.choice.wrong{background:var(--seal-soft);border-color:var(--seal);color:var(--seal)}
+.choice:disabled{cursor:default}
+.verdict{font-family:var(--f-display);font-size:20px;font-weight:700}
+.verdict.ok{color:var(--cel)} .verdict.no{color:var(--seal)}
+.exp{display:grid;gap:14px}
+.exp p{margin:0}
+.clist{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.clist li{display:grid;grid-template-columns:28px 1fr;gap:6px;padding:8px 10px;border-radius:8px;background:var(--sunk)}
+.clist li.ans{background:var(--cel-soft)}
+.clist li.pick{background:var(--seal-soft)}
+.clist .n{font-family:var(--f-display);font-weight:700}
+.clist .who{font-size:12px;font-weight:700;margin-left:6px}
+.clist li.ans .who{color:var(--cel)} .clist li.pick .who{color:var(--seal)}
+.more{border-left:3px solid var(--gold);padding:4px 0 4px 12px}
+.oldexp{font-size:14px;color:var(--muted);white-space:pre-wrap}
+/* mnemonic rows */
+.mn{display:grid;gap:2px;padding:12px 0;border-top:1px solid var(--line)}
+.mn:first-child{border-top:0}
+.mn .hand{font-family:var(--f-hand);font-size:15px;line-height:1.35;color:var(--pencil)}
+.mn .k{font-weight:700}
+.mn .f{font-size:14px}
+.mn .sub{font-size:11px;color:var(--muted);letter-spacing:.04em}
+.related .mn{padding:8px 0}
+/* result */
+.score{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.score b{font-family:var(--f-display);font-size:64px;line-height:1;font-variant-numeric:tabular-nums}
+.grade{font-family:var(--f-display);font-size:20px;font-weight:700;padding:4px 12px;border-radius:8px;background:var(--cel-soft);color:var(--cel)}
+.grade.fail{background:var(--seal-soft);color:var(--seal)}
+.bars{display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:150px 1fr 70px;gap:10px;align-items:center;font-size:14px;font-variant-numeric:tabular-nums}
+.bar .t{height:10px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.bar .t i{display:block;height:100%;background:var(--cel)}
+.bar.weak .t i{background:var(--seal)}
+.bar.weak .nm{color:var(--seal);font-weight:700}
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.sheet h3{margin-bottom:4px}
+.sheet .part{margin-top:14px}
+/* study */
+.studyhead{display:grid;gap:10px}
+.grid-her{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.her{border:1px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden;text-align:left;padding:0}
+.her .im{height:130px;background:#fff;overflow:hidden}
+.her .im img{width:100%;object-fit:cover;object-position:top}
+.her div.c{padding:8px 10px;font-size:13px}
+.modal{position:fixed;inset:0;background:rgba(10,14,16,.55);display:grid;place-items:center;z-index:20;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.modal .box{background:var(--surface);border-radius:12px;max-width:760px;width:100%;max-height:100%;overflow:auto;padding:18px;display:grid;gap:12px}
+.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r)}
+.wlist{display:grid;gap:8px}
+.witem{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:8px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;font-size:14px;z-index:30}
+@media (max-width:560px){h1{font-size:25px}.choice{font-size:19px;padding:10px 0}.bar{grid-template-columns:96px 1fr 58px;font-size:13px}.score b{font-size:52px}}
+@media (prefers-reduced-motion:no-preference){.progress i{transition:width .25s}}
+</style>
+</head>
+<body>
+
+
+<header class="top"><div class="top-in">
+  <div class="brand">한능검 심화 연습장<small>51–80회</small></div>
+  <nav class="tabs" aria-label="메뉴">
+    <a href="#home" data-nav="home">홈</a>
+    <a href="#setup" data-nav="setup">문제 풀기</a>
+    <a href="#study" data-nav="study">공부하기</a>
+    <a href="#wrong" data-nav="wrong">오답 노트</a>
+  </nav>
+</div></header>
+<main class="wrap" id="app"><p class="muted">문제를 불러오는 중…</p></main>
+<div id="toast" class="toast" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const PARTS={1:'선사·고조선·여러 나라',2:'삼국·가야',3:'남북국·후삼국',4:'고려',5:'조선 전기',6:'조선 후기',7:'개항기·대한제국',8:'일제 강점기',9:'현대',10:'통합·지역사'};
+const PART_MN={1:[1],2:[2],3:[3],4:[4,5],5:[6],6:[7,8],7:[9],8:[10],9:[11],10:[]};
+const CIR='①②③④⑤';
+let DATA=null, MN=[], YS=null;
+const IMG={}, IMGP={};
+const S={setup:{rounds:new Set(), parts:new Set(), count:20, shuffle:true}, quiz:null, result:null, studyPart:'all'};
+const $=s=>document.querySelector(s);
+const app=$('#app');
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function store(k,v){try{if(v===undefined){const x=localStorage.getItem(k);return x?JSON.parse(x):null}localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
+let WRONG=store('hn_wrong')||{};
+function saveWrong(){store('hn_wrong',WRONG)}
+function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(t._t);t._t=setTimeout(()=>t.hidden=true,2600)}
+
+async function boot(){
+  try{
+    const [d,m]=await Promise.all([fetch('data.json').then(r=>r.json()),fetch('mnemonic.json').then(r=>r.json())]);
+    DATA=d; MN=m;
+    try{const y=await fetch('yesang.json'); if(y.ok) YS=await y.json()}catch(e){}
+  }catch(e){app.innerHTML='<div class="empty">데이터를 불러오지 못했어요. 새로고침해 주세요.</div>';return}
+  window.addEventListener('hashchange',route); route();
+}
+function rounds(){return Object.keys(DATA).map(Number).sort((a,b)=>a-b)}
+function allQs(){
+  const out=[];
+  for(const r of rounds()){const d=DATA[r];for(let n=1;n<=50;n++){if(!d.ans[n-1])continue;out.push({id:r+'-'+n,r,n,part:d.parts[n-1],ans:d.ans[n-1],pts:d.pts[n-1]})}}
+  if(YS) YS.forEach((q,i)=>out.push({id:'Y-'+(i+1),r:'Y',n:i+1,part:q.p,ans:q.ans,pts:q.pts||2,ys:q}));
+  return out;
+}
+function qLabel(q){return q.r==='Y'?`예상문제 ${q.n}`:`${q.r}회 ${q.n}번`}
+function getExp(q){return q.r==='Y'?q.ys.exp:(DATA[q.r].exp||{})[q.n]}
+function loadImgs(r){
+  if(IMG[r])return Promise.resolve(IMG[r]);
+  if(!IMGP[r])IMGP[r]=fetch('img/r'+r+'.json').then(x=>x.json()).then(j=>IMG[r]=j).catch(()=>{delete IMGP[r];return null});
+  return IMGP[r];
+}
+function route(){
+  app.onclick=null;
+  const h=(location.hash||'#home').slice(1);
+  document.querySelectorAll('[data-nav]').forEach(a=>a.setAttribute('aria-current',a.dataset.nav===(h==='quiz'||h==='result'?'setup':h)?'page':'false'));
+  window.scrollTo(0,0);
+  if(h==='setup')return viewSetup();
+  if(h==='quiz')return S.quiz?viewQuiz():(location.hash='#setup');
+  if(h==='result')return S.result?viewResult():(location.hash='#setup');
+  if(h==='study')return viewStudy();
+  if(h==='wrong')return viewWrong();
+  viewHome();
+}
+/* ---------- home ---------- */
+function viewHome(){
+  const rs=rounds(); const total=allQs().length; const done=rs.filter(r=>Object.keys(DATA[r].exp||{}).length>=50).length;
+  const nw=Object.keys(WRONG).length;
+  app.innerHTML=`<div class="stack">
+  <section class="hero"><span class="label">한국사능력검정시험 심화</span>
+    <h1>기출 ${rs.length}회분을 한 문제씩 풀고, 해설로 바로 확인해요</h1>
+    <p class="muted">원본 시험지의 사료와 문화유산 사진을 그대로 담았어요. 20문항 이상 풀고 완료하면 예상 점수와 약한 시대, 외워야 할 연상 카드를 보여 드려요.</p>
+    <div class="stats"><div><b>${total.toLocaleString()}</b><span class="muted">문항</span></div><div><b>${rs[0]}–${rs[rs.length-1]}회</b><span class="muted">${rs.length}개 회차${YS?' + 예상문제':''}</span></div><div><b>${done}</b><span class="muted">해설 완성 회차</span></div><div><b>${nw}</b><span class="muted">오답 노트</span></div></div>
+  </section>
+  <div class="modes">
+    <a class="mode" href="#setup"><span class="seal c">問</span><strong>문제 풀기</strong><span>회차·시대·문항 수를 골라 섞어 풀기</span></a>
+    <a class="mode" href="#study"><span class="seal g">學</span><strong>공부하기</strong><span>시대별 개념 + 연상 암기 + 기출 속 문화유산</span></a>
+    <a class="mode" href="#wrong"><span class="seal">誤</span><strong>오답 노트</strong><span>틀린 문제 ${nw}개 다시 풀기</span></a>
+  </div></div>`;
+}
+/* ---------- setup ---------- */
+function filtered(){
+  const st=S.setup; let qs=allQs();
+  if(st.rounds.size) qs=qs.filter(q=>st.rounds.has(String(q.r)));
+  else qs=qs.filter(q=>q.r!=='Y');
+  if(st.parts.size) qs=qs.filter(q=>st.parts.has(q.part));
+  return qs;
+}
+function viewSetup(){
+  const st=S.setup, rs=rounds();
+  const rchips=rs.map(r=>`<button class="chip" data-r="${r}" aria-pressed="${st.rounds.has(String(r))}">${r}회<small>${DATA[r].date.slice(0,7)}</small></button>`).join('')+(YS?`<button class="chip" data-r="Y" aria-pressed="${st.rounds.has('Y')}">예상문제<small>${YS.length}</small></button>`:'');
+  const pchips=Object.entries(PARTS).map(([k,v])=>`<button class="chip" data-p="${k}" aria-pressed="${st.parts.has(+k)}">${v}</button>`).join('');
+  const n=filtered().length;
+  const counts=[10,20,30,50,0];
+  app.innerHTML=`<div class="stack">
+   <h2>문제 풀기 설정</h2>
+   <div class="card stack">
+    <div class="field"><div class="row"><span class="label">회차</span><button class="chip" id="rall" aria-pressed="${!st.rounds.size}">전체 기출</button></div><div class="chips" id="rch">${rchips}</div></div>
+    <div class="field"><div class="row"><span class="label">시대</span><button class="chip" id="pall" aria-pressed="${!st.parts.size}">전체 범위</button></div><div class="chips" id="pch">${pchips}</div></div>
+    <div class="field"><span class="label">문항 수</span><div class="seg" id="cnt">${counts.map(c=>`<button data-c="${c}" aria-pressed="${st.count===c}">${c||'전부'}</button>`).join('')}</div></div>
+    <div class="field"><span class="label">순서</span><div class="seg" id="ord"><button data-s="1" aria-pressed="${st.shuffle}">섞어서</button><button data-s="0" aria-pressed="${!st.shuffle}">회차·번호 순</button></div></div>
+   </div>
+   <div class="row"><button class="btn primary" id="go" ${n?'':'disabled'}>시작하기</button><span class="muted">조건에 맞는 문항 ${n.toLocaleString()}개 중 ${st.count&&st.count<n?st.count:n}개</span></div>
+  </div>`;
+  $('#rch').onclick=e=>{const b=e.target.closest('[data-r]');if(!b)return;const r=b.dataset.r;st.rounds.has(r)?st.rounds.delete(r):st.rounds.add(r);viewSetup()};
+  $('#pch').onclick=e=>{const b=e.target.closest('[data-p]');if(!b)return;const p=+b.dataset.p;st.parts.has(p)?st.parts.delete(p):st.parts.add(p);viewSetup()};
+  $('#rall').onclick=()=>{st.rounds.clear();viewSetup()};
+  $('#pall').onclick=()=>{st.parts.clear();viewSetup()};
+  $('#cnt').onclick=e=>{const b=e.target.closest('[data-c]');if(b){st.count=+b.dataset.c;viewSetup()}};
+  $('#ord').onclick=e=>{const b=e.target.closest('[data-s]');if(b){st.shuffle=b.dataset.s==='1';viewSetup()}};
+  $('#go').onclick=()=>{let qs=filtered();if(st.shuffle)qs=shuffle(qs);if(st.count)qs=qs.slice(0,st.count);startQuiz(qs,'설정한 문제')};
+}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function startQuiz(qs,title){S.quiz={qs,title,i:0,picks:{}};S.result=null;location.hash='#quiz';if(location.hash==='#quiz')viewQuiz()}
+/* ---------- quiz ---------- */
+function answeredCount(){return Object.keys(S.quiz.picks).length}
+function relatedMn(q,e){
+  const secs=PART_MN[q.part]||[]; if(!secs.length||!e)return[];
+  const txt=[e.a,...(e.c||[]),e.m].join(' ');
+  const rows=MN.filter(s=>secs.includes(s.n)).flatMap(s=>s.rows);
+  const scored=rows.map(r=>{const toks=r.k.replace(/[0-9·()~,./]/g,' ').split(/\s+/).filter(t=>t.length>=2);const sc=toks.reduce((a,t)=>a+(txt.includes(t)?t.length:0),0);return{r,sc}}).filter(x=>x.sc>=2).sort((a,b)=>b.sc-a.sc);
+  return scored.slice(0,2).map(x=>x.r);
+}
+function mnRow(r){return `<div class="mn"><div class="hand">${esc(r.mn).replace(/\*\*/g,'')}</div><div><span class="k">${esc(r.k)}</span> <span class="f">${esc(r.f).replace(/\*\*/g,'')}</span></div></div>`}
+function renderQBody(q){
+  if(q.r==='Y'){const y=q.ys;return `<div class="card stack"><p style="margin:0;font-weight:600">${esc(y.q)}</p>${y.src?`<div class="sheet" style="font-family:var(--f-display);white-space:pre-wrap">${esc(y.src)}</div>`:''}<ol class="clist">${y.ch.map((c,i)=>`<li><span class="n">${CIR[i]}</span><span>${esc(c)}</span></li>`).join('')}</ol></div>`}
+  const im=IMG[q.r]&&IMG[q.r][q.n];
+  return `<div class="qimg">${im?`<img alt="${qLabel(q)} 문제" src="${im}">`:'<div class="ph">문제 이미지를 불러오는 중…</div>'}</div>`;
+}
+function renderExp(q,pick,view){
+  const e=getExp(q), ok=pick===q.ans;
+  let h=`<div class="card exp"><div class="verdict ${ok?'ok':'no'}">${view?'정답 '+CIR[q.ans-1]:ok?'정답이에요':'아쉬워요, 정답은 '+CIR[q.ans-1]}</div>`;
+  if(e){
+    h+=`<div><div class="label">정답 근거</div><p>${esc(e.a)}</p></div>`;
+    h+=`<div><div class="label">선지별 해설</div><ul class="clist">${e.c.map((c,i)=>{const a=i+1===q.ans,p=i+1===pick&&!ok;return `<li class="${a?'ans':p?'pick':''}"><span class="n">${CIR[i]}</span><span>${esc(c)}${a?'<span class="who">정답</span>':p?'<span class="who">내 선택</span>':''}</span></li>`}).join('')}</ul></div>`;
+    if(e.m)h+=`<div class="more"><div class="label">더 알아둘 것</div><p>${esc(e.m)}</p></div>`;
+    const rel=relatedMn(q,e); if(rel.length)h+=`<div class="related"><div class="label">연상 암기</div>${rel.map(mnRow).join('')}</div>`;
+  }else{
+    const old=DATA[q.r].old[q.n-1];
+    h+=`<div><div class="label">상세 해설 준비 중 · 기존 해설(참고)</div><p class="oldexp">${esc(old)||'—'}</p></div>`;
+  }
+  return h+'</div>';
+}
+async function viewQuiz(){
+  const z=S.quiz, q=z.qs[z.i], pick=z.picks[q.id];
+  const done=answeredCount(), canFinish=done>=20||done===z.qs.length;
+  const right=z.qs.filter(x=>z.picks[x.id]===x.ans).length;
+  app.innerHTML=`<div class="stack">
+   <div class="qbar"><strong style="font-variant-numeric:tabular-nums">${z.i+1} / ${z.qs.length}</strong><div class="progress"><i style="width:${done/z.qs.length*100}%"></i></div><span class="muted" style="font-variant-numeric:tabular-nums">맞힘 ${right}/${done}</span>
+   <button class="btn ${canFinish?'primary':''}" id="fin" ${canFinish?'':'disabled'} title="20문항 이상 풀면 완료할 수 있어요">완료</button></div>
+   ${canFinish?'':`<span class="muted" style="font-size:13px">20문항 이상 풀면 완료 버튼이 열려요 (지금 ${done}문항)</span>`}
+   <div class="qmeta"><span class="tag">${qLabel(q)}</span><span class="tag">${q.pts}점</span><span class="tag">${PARTS[q.part]}</span>${q.r!=='Y'?`<span class="tag">${DATA[q.r].date}</span>`:''}${DATA[q.r]&&DATA[q.r].self?`<span class="tag" title="공식 정답 공개 전에 직접 풀어 확정한 정답">자체 정답</span>`:''}</div>
+   <div id="qb">${renderQBody(q)}</div>
+   <div class="choices">${[1,2,3,4,5].map(i=>`<button class="choice ${pick?(i===q.ans?'right':i===pick?'wrong':''):''}" data-i="${i}" ${pick?'disabled':''} aria-label="${i}번">${CIR[i-1]}</button>`).join('')}</div>
+   <div id="ex">${pick?renderExp(q,pick):''}</div>
+   <div class="row" style="justify-content:space-between"><button class="btn ghost" id="prev" ${z.i?'':'disabled'}>← 이전</button><button class="btn ${pick?'primary':''}" id="next">${z.i<z.qs.length-1?'다음 →':'마지막 문제'}</button></div>
+  </div>`;
+  document.querySelector('.choices').onclick=e=>{const b=e.target.closest('[data-i]');if(!b||z.picks[q.id])return;answer(q,+b.dataset.i)};
+  $('#prev').onclick=()=>{z.i--;viewQuiz()};
+  $('#next').onclick=()=>{if(z.i<z.qs.length-1){z.i++;viewQuiz()}else if(answeredCount()>=20||answeredCount()===z.qs.length)finish();else toast('마지막 문제예요. 20문항 이상 풀면 완료할 수 있어요')};
+  $('#fin').onclick=finish;
+  if(q.r!=='Y'&&!(IMG[q.r]&&IMG[q.r][q.n])){await loadImgs(q.r);if(S.quiz===z&&z.qs[z.i]===q)$('#qb').innerHTML=renderQBody(q)}
+  const nx=z.qs[z.i+1]; if(nx&&nx.r!=='Y')loadImgs(nx.r);
+}
+function answer(q,i){
+  const z=S.quiz; z.picks[q.id]=i;
+  if(i!==q.ans){WRONG[q.id]={pick:i,t:Date.now()}}else if(WRONG[q.id]){WRONG[q.id].fixed=Date.now()}
+  saveWrong(); viewQuiz();
+  setTimeout(()=>{const ex=$('#ex');ex&&ex.scrollIntoView({behavior:'smooth',block:'nearest'})},30);
+}
+function finish(){
+  const z=S.quiz, ans=z.qs.filter(q=>z.picks[q.id]);
+  const per={}; let got=0,tot=0;
+  ans.forEach(q=>{const ok=z.picks[q.id]===q.ans;tot+=q.pts;if(ok)got+=q.pts;const p=per[q.part]||(per[q.part]={n:0,ok:0});p.n++;if(ok)p.ok++});
+  S.result={score:Math.round(got/tot*100),got,tot,n:ans.length,ok:ans.filter(q=>z.picks[q.id]===q.ans).length,per,wrongQs:ans.filter(q=>z.picks[q.id]!==q.ans)};
+  const hist=store('hn_hist')||[];hist.push({t:Date.now(),s:S.result.score,n:S.result.n});store('hn_hist',hist.slice(-50));
+  location.hash='#result';
+}
+/* ---------- result ---------- */
+function weakParts(per){
+  const arr=Object.entries(per).map(([p,v])=>({p:+p,rate:v.ok/v.n,n:v.n}));
+  let w=arr.filter(x=>x.rate<0.7).sort((a,b)=>a.rate-b.rate);
+  if(!w.length)w=arr.filter(x=>x.rate<1).sort((a,b)=>a.rate-b.rate).slice(0,2);
+  return w;
+}
+function sheetRows(p,wrongQs){
+  const secs=PART_MN[p]||[]; let rows=[];
+  wrongQs.filter(q=>q.part===p).forEach(q=>relatedMn(q,getExp(q)).forEach(r=>{if(!rows.includes(r))rows.push(r)}));
+  const all=MN.filter(s=>secs.includes(s.n)).flatMap(s=>s.rows);
+  for(const r of all){if(rows.length>=12)break;if(!rows.includes(r))rows.push(r)}
+  return rows;
+}
+function viewResult(){
+  const R=S.result, w=weakParts(R.per);
+  const grade=R.score>=80?'1급':R.score>=70?'2급':R.score>=60?'3급':'불합격';
+  const bars=Object.keys(PARTS).filter(p=>R.per[p]).map(p=>{const v=R.per[p],rate=v.ok/v.n,isw=w.some(x=>x.p==p);return `<div class="bar ${isw?'weak':''}"><span class="nm">${PARTS[p]}</span><span class="t"><i style="width:${rate*100}%"></i></span><span>${v.ok}/${v.n} · ${Math.round(rate*100)}%</span></div>`}).join('');
+  const sheets=w.map(x=>{const rows=sheetRows(x.p,R.wrongQs);return `<div class="part"><h3>${PARTS[x.p]} <span class="muted" style="font-size:14px;font-family:var(--f-body)">정답률 ${Math.round(x.rate*100)}%</span></h3>${rows.length?rows.map(mnRow).join(''):`<p class="muted">이 시대는 오답 해설의 '더 알아둘 것'을 다시 확인해 보세요.</p>${R.wrongQs.filter(q=>q.part===x.p).map(q=>{const e=getExp(q);return e?`<div class="mn"><div class="k">${qLabel(q)}</div><div class="f">${esc(e.m||e.a)}</div></div>`:''}).join('')}`}</div>`}).join('');
+  app.innerHTML=`<div class="stack">
+   <h2>결과</h2>
+   <div class="card stack"><div class="score"><b>${R.score}</b><span class="muted">점 (예상)</span><span class="grade ${grade==='불합격'?'fail':''}">${grade}</span></div>
+   <span class="muted">${R.n}문항 중 ${R.ok}개 정답 · 배점 ${R.got}/${R.tot}점을 100점으로 환산했어요. 심화 기준 80점 1급, 70점 2급, 60점 3급.</span></div>
+   <div class="card stack"><h3>시대별 정답률</h3><div class="bars">${bars}</div></div>
+   <div class="stack"><div class="row" style="justify-content:space-between"><h3>외워야 할 부분</h3><div class="row"><button class="btn" id="svimg">이미지로 저장</button><button class="btn" id="svpdf">PDF로 저장</button></div></div>
+    <div class="sheet" id="sheet"><div class="label">한능검 심화 · ${new Date().toLocaleDateString('ko-KR')} · 예상 ${R.score}점</div><h3 style="margin-top:6px">약한 시대 암기 카드</h3>${sheets||'<p class="muted">모든 시대를 다 맞혔어요. 약점이 없어요.</p>'}</div></div>
+   <div class="row"><button class="btn primary" id="rw" ${R.wrongQs.length?'':'disabled'}>이번 오답 ${R.wrongQs.length}개 다시 풀기</button><a class="btn" href="#setup" style="text-decoration:none">새로 풀기</a></div>
+  </div>`;
+  $('#rw').onclick=()=>startQuiz(R.wrongQs,'오답 다시 풀기');
+  $('#svimg').onclick=()=>saveSheet('png');$('#svpdf').onclick=()=>saveSheet('pdf');
+}
+async function sheetCanvas(){
+  const el=$('#sheet'); const bg=getComputedStyle(el).backgroundColor;
+  return html2canvas(el,{scale:2,backgroundColor:bg,useCORS:true});
+}
+async function saveSheet(kind){
+  let dl=null; try{dl=await (window.claude?.use?window.claude.use('downloads'):null)}catch(e){}
+  if(typeof html2canvas==='undefined'){toast('저장 도구를 불러오지 못했어요');return}
+  const cv=await sheetCanvas(); const name='한능검_암기카드_'+new Date().toISOString().slice(0,10);
+  let blob;
+  if(kind==='png'){blob=await new Promise(r=>cv.toBlob(r,'image/png'))}
+  else{const {jsPDF}=window.jspdf;const pdf=new jsPDF({unit:'pt',format:'a4'});const W=pdf.internal.pageSize.getWidth(),H=pdf.internal.pageSize.getHeight(),m=28;const iw=W-2*m;const ph=(H-2*m)*cv.width/iw;let y=0;while(y<cv.height){const h=Math.min(ph,cv.height-y);const c=document.createElement('canvas');c.width=cv.width;c.height=h;c.getContext('2d').drawImage(cv,0,y,cv.width,h,0,0,cv.width,h);if(y)pdf.addPage();pdf.addImage(c.toDataURL('image/jpeg',0.92),'JPEG',m,m,iw,h*iw/cv.width);y+=h}blob=pdf.output('blob')}
+  if(dl){try{await dl.save({filename:name+'.'+kind,data:blob});toast('저장했어요');return}catch(e){if(e&&e.code==='declined')return}}
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name+'.'+kind;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),4000);toast('저장했어요');
+}
+function showModal(html){const m=document.createElement('div');m.className='modal';m.innerHTML=`<div class="box">${html}<button class="btn" data-x>닫기</button></div>`;m.onclick=e=>{if(e.target===m||e.target.closest('[data-x]'))m.remove()};document.body.appendChild(m)}
+/* ---------- wrong ---------- */
+function viewWrong(){
+  const all=allQs(); const map=Object.fromEntries(all.map(q=>[q.id,q]));
+  const items=Object.entries(WRONG).filter(([id,v])=>map[id]&&!v.fixed).sort((a,b)=>b[1].t-a[1].t);
+  const fixed=Object.entries(WRONG).filter(([id,v])=>map[id]&&v.fixed);
+  app.innerHTML=`<div class="stack"><h2>오답 노트</h2>
+   <p class="muted" style="margin:0">틀린 문제가 자동으로 모여요. 다시 풀어서 맞히면 '극복한 문제'로 옮겨져요. 이 기기 브라우저에만 저장돼요.</p>
+   ${items.length?`<div class="row"><button class="btn primary" id="wa">오답 ${items.length}개 모두 다시 풀기</button><button class="btn" id="ws">섞어서 다시 풀기</button></div>
+   <div class="wlist">${items.map(([id,v])=>{const q=map[id];return `<div class="witem"><div><strong>${qLabel(q)}</strong> <span class="muted">· ${PARTS[q.part]} · 내 답 ${CIR[v.pick-1]} / 정답 ${CIR[q.ans-1]}</span></div><div class="row"><button class="btn" data-one="${id}">다시 풀기</button><button class="btn ghost" data-del="${id}">삭제</button></div></div>`}).join('')}</div>`:'<div class="empty">아직 틀린 문제가 없어요. 문제를 풀면 여기에 모여요.</div>'}
+   ${fixed.length?`<details><summary class="muted">극복한 문제 ${fixed.length}개</summary><div class="wlist" style="margin-top:8px">${fixed.map(([id])=>`<div class="witem"><span>${qLabel(map[id])} · ${PARTS[map[id].part]}</span><button class="btn ghost" data-del="${id}">지우기</button></div>`).join('')}</div></details>`:''}
+  </div>`;
+  const list=items.map(([id])=>map[id]);
+  $('#wa')&&($('#wa').onclick=()=>startQuiz(list,'오답 다시 풀기'));
+  $('#ws')&&($('#ws').onclick=()=>startQuiz(shuffle(list),'오답 다시 풀기'));
+  app.onclick=e=>{const o=e.target.closest('[data-one]'),d=e.target.closest('[data-del]');
+    if(o){startQuiz([map[o.dataset.one]],'오답 다시 풀기')}
+    if(d){delete WRONG[d.dataset.del];saveWrong();viewWrong()}};
+}
+/* ---------- study ---------- */
+function viewStudy(){
+  app.onclick=null;
+  const sp=S.studyPart;
+  const tabs=`<button class="chip" data-s="all" aria-pressed="${sp==='all'}">전체</button>`+MN.map(s=>`<button class="chip" data-s="${s.n}" aria-pressed="${sp==s.n}">${s.title}</button>`).join('');
+  const secs=sp==='all'?MN:MN.filter(s=>s.n==sp);
+  const body=secs.map(s=>{let sub=null;return `<section class="card"><h2 style="font-size:20px">${s.n}. ${esc(s.title)}</h2>${s.rows.map(r=>{let h='';if(r.sub&&r.sub!==sub){sub=r.sub;h=`<div class="sub" style="margin-top:12px">${esc(r.sub)}</div>`}return h+mnRow(r)}).join('')}</section>`}).join('');
+  const examPart=sp==='all'?null:+Object.keys(PART_MN).find(k=>PART_MN[k].includes(+sp));
+  const her=[];for(const r of rounds()){DATA[r].her.forEach(n=>{const p=DATA[r].parts[n-1];if(sp==='all'||p===examPart)her.push({r,n,p})})}
+  app.innerHTML=`<div class="stack"><div class="studyhead"><h2>공부하기</h2><p class="muted" style="margin:0">손글씨처럼 보이는 작은 줄이 연상 문장이에요. 연상을 떠올린 뒤 아래 팩트를 확인하세요.</p><div class="chips" id="st">${tabs}</div></div>
+   <section class="card stack"><div class="row" style="justify-content:space-between"><h2 style="font-size:20px">기출 속 문화유산</h2><span class="muted">${her.length}문항 · 사진을 누르면 문제와 정답</span></div>
+   ${her.length?`<div class="grid-her">${her.slice(0,sp==='all'?24:60).map(h=>`<button class="her" data-h="${h.r}-${h.n}"><div class="im" data-im="${h.r}-${h.n}"></div><div class="c">${h.r}회 ${h.n}번 · ${PARTS[h.p]}</div></button>`).join('')}</div>${sp==='all'&&her.length>24?'<p class="muted" style="margin:0">시대를 고르면 해당 시대 문화유산 문항을 모두 볼 수 있어요.</p>':''}`:'<p class="muted">이 시대의 문화유산 사진 문항은 아직 없어요.</p>'}</section>
+   ${body}</div>`;
+  $('#st').onclick=e=>{const b=e.target.closest('[data-s]');if(b){S.studyPart=b.dataset.s==='all'?'all':+b.dataset.s;viewStudy()}};
+  document.querySelectorAll('[data-im]').forEach(async el=>{const [r,n]=el.dataset.im.split('-');const j=await loadImgs(r);if(j&&j[n])el.innerHTML=`<img alt="" src="${j[n]}">`});
+  document.querySelector('.grid-her')&&(document.querySelector('.grid-her').onclick=async e=>{const b=e.target.closest('[data-h]');if(!b)return;const [r,n]=b.dataset.h.split('-').map(Number);const q=allQs().find(x=>x.id===r+'-'+n);await loadImgs(r);
+    showModal(`<div class="qmeta"><span class="tag">${qLabel(q)}</span><span class="tag">${PARTS[q.part]}</span></div>${renderQBody(q)}<details><summary><strong>정답과 해설 보기</strong></summary>${renderExp(q,q.ans,1)}</details>`)});
+}
+boot();
+</script>
+
+</body>
+</html>
